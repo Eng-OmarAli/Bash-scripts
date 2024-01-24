@@ -21,11 +21,12 @@ else
     exit 1
 fi
 
-# alert user if CPU or Memory threshold reached
-ps -eo pcpu | awk -v CPU_threshold="$CPU_ALERT_THRESHOLD" '$1 > CPU_threshold {print "Alert: A process used CPU beyond the threshold"}'
-ps -eo pcpu | awk -v Mem_threshold="$MEMORY_ALERT_THRESHOLD" '$1 > Mem_threshold {print "Alert: A process used Memory beyond the threshold"}'
-
 while true; do
+
+    # alert user if CPU or Memory threshold reached
+    ps -eo pcpu | awk -v CPU_threshold="$CPU_ALERT_THRESHOLD" '$1 > CPU_threshold {print "Alert: A process used CPU beyond the threshold"}'
+    ps -eo pcpu | awk -v Mem_threshold="$MEMORY_ALERT_THRESHOLD" '$1 > Mem_threshold {print "Alert: A process used Memory beyond the threshold"}'
+
     echo "*************** Process Monitor ***************"
 
     echo "0: Exit"
